@@ -24,6 +24,9 @@ app.get('/api/auth', auth, (req, res) => {
   res.json({
     isAuth: true,
     id: req.user._id,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    email: req.user.email,
   });
 });
 
@@ -147,7 +150,11 @@ app.delete('/api/delete_book', (req, res) => {
   });
 });
 
+const randomNumber = () => {
+  let no = Math.round(Math.random() * 10);
+  return no;
+};
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`Server is running on ${port}`);
+  console.log(`Server is running on ${port} Random no : ${randomNumber()}`);
 });
